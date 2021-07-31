@@ -2,12 +2,16 @@
 <html>
     <head>
         <script>
-            console.log("selection")
+            // variable initalization
+            var playerScore;
+            var computerScore;
             const myArray = ["Rock", "Paper", "Scissors"];
+
+            //select computers choice
             function computerPlay() {
                return myArray[Math.floor(Math.random() * myArray.length)];
             }
-            //console.log(computerPlay())
+            console.log(computerPlay())
 
             function playRound(playerSelection) {
                 var playerSelection = playerSelection.toLowerCase();
@@ -15,20 +19,37 @@
                 if (playerSelection == "rock" && computerSelection == "scissors" ||
                 playerSelection == "scissors" && computerSelection == "paper" || 
                 playerSelection == "paper" && computerSelection == "rock" ) {
+                    playerScore++
                     return `You Win! ${playerSelection} beats ${computerSelection}`;
+                    
                 }
                 else if  (playerSelection == computerSelection){
                    return `Its a draw try again`;
                 }
                 else {
-                    return `You Lose ${computerSelection} beats ${playerSelection}`;
-                    //return false
+                    computerScore++
+                    return `You Lose! ${computerSelection} beats ${playerSelection}`;
                 }
             }
-            var computerSelection = computerPlay();
-            var playerSelection = "Paper";
-            //var computerSelection = computerPlay();-- computerSelection removed from fuction requirements 
-            console.log(playRound(playerSelection));
+
+            function game() {
+                playerScore = 0;
+                computerScore = 0;
+                for (let i = 0; i < 5; i++) {
+                    var playerSelection = prompt("Rock, Paper, Scissors?");
+                    console.log(playRound(playerSelection));   
+                }
+                if (playerScore > computerScore) {
+                    console.log(`You Win The game ${playerScore} : ${computerScore}`)
+                }
+                else if (playerScore < computerScore) {
+                    console.log(`You Lose The game ${computerScore} : ${playerScore}`)
+                }
+                else {
+                    console.log(`Its a draw!`)
+                }
+            }
+            game();
         </script>
     </head>
 
