@@ -9,9 +9,26 @@
             }
             //console.log(computerPlay())
 
-            function playRound(playerSelection, computerSelection) {
-                if ()
+            function playRound(playerSelection) {
+                var playerSelection = playerSelection.toLowerCase();
+                var computerSelection = computerPlay().toLowerCase();
+                if (playerSelection == "rock" && computerSelection == "scissors" ||
+                playerSelection == "scissors" && computerSelection == "paper" || 
+                playerSelection == "paper" && computerSelection == "rock" ) {
+                    return `You Win! ${playerSelection} beats ${computerSelection}`;
+                }
+                else if  (playerSelection == computerSelection){
+                   return `Its a draw try again`;
+                }
+                else {
+                    return `You Lose ${computerSelection} beats ${playerSelection}`;
+                    //return false
+                }
             }
+            var computerSelection = computerPlay();
+            var playerSelection = "Paper";
+            //var computerSelection = computerPlay();-- computerSelection removed from fuction requirements 
+            console.log(playRound(playerSelection));
         </script>
     </head>
 
